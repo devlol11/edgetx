@@ -1,0 +1,29 @@
+name: Build V16 Firmware
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/edgetx/edgetx-dev:latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Build firmware
+        run: |
+          mkdir build && cd build
+          cmake -DPCB=X10 -DPCBREV=V16 -DCMAKE_BUILD_TYPE=Release \
+                -DCMAKE_TOOLCHAIN_FILE=../cmake/toolchain/arm-none-eabi.cmake \
+                ../radio/src
+          make -j$(nproc) firmware
+
+      - name: Upload firmware
+        uses: actions/upload-artifact@v4
+        with:
+          name: edgetx-v16-custom
+          path: build/*.bin
