@@ -231,6 +231,10 @@ void boardInit()
 
 #if defined(LED_STRIP_GPIO)
   rgbLedInit();
+  for (uint8_t i = 0; i < LED_STRIP_LENGTH; i++) {
+    rgbSetLedColor(i, 255, 200, 220);
+  }
+  rgbLedColorApply();
 #endif
 
 #if defined(BLUETOOTH)
