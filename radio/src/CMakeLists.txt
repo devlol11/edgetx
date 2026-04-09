@@ -68,6 +68,8 @@ endif()
 
 if(PCB STREQUAL X7 AND PCBREV STREQUAL LR3PRO)
   option(POWER_LED_BLUE  "Override Power LED to be normally Blue" ON)
+elseif(PCBREV STREQUAL V16)
+  option(POWER_LED_BLUE  "Override Power LED to be normally Blue" ON)
 else()
   option(POWER_LED_BLUE  "Override Power LED to be normally Blue" OFF)
 endif()
