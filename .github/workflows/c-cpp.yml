@@ -17,13 +17,11 @@ jobs:
       - name: Build firmware
         run: |
           mkdir build && cd build
-          cmake -DPCB=X10 -DPCBREV=V16 -DCMAKE_BUILD_TYPE=Release \
-                -DCMAKE_TOOLCHAIN_FILE=../cmake/toolchain/arm-none-eabi.cmake \
-                ../radio/src
+          cmake -DPCB=X10 -DPCBREV=V16 -DCMAKE_BUILD_TYPE=Release ..
           make -j$(nproc) firmware
 
       - name: Upload firmware
         uses: actions/upload-artifact@v4
         with:
           name: edgetx-v16-custom
-          path: build/*.bin
+          path: build/arm-none-eabi/*.bin
