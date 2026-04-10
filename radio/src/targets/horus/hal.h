@@ -54,9 +54,9 @@
 // 6POS SW
 #if defined(RADIO_V16)
   #define SIXPOS_SWITCH_INDEX             5
-  #define SIXPOS_LED_RED                255
-  #define SIXPOS_LED_GREEN              200
-  #define SIXPOS_LED_BLUE               220
+  #define SIXPOS_LED_RED                160
+  #define SIXPOS_LED_GREEN              0
+  #define SIXPOS_LED_BLUE               255
 #endif
 
 // ADC
